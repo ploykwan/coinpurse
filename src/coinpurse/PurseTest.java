@@ -43,9 +43,9 @@ public class PurseTest {
     public void testInsert()
     {
         Purse purse = new Purse(3);
-        Coin coin1 = new Coin(5);
-        Coin coin2 = new Coin(10);
-        Coin coin3 = new Coin(1);
+        Valuable coin1 = new Coin(5);
+        Valuable coin2 = new Coin(10);
+        Valuable coin3 = new Coin(1);
         assertTrue( purse.insert(coin1));
         assertTrue( purse.insert(coin3));
         assertTrue( purse.insert(coin2));
@@ -60,7 +60,7 @@ public class PurseTest {
     public void testInsertNoValue()
     {
         Purse purse = new Purse(3);
-        Coin fakeCoin = new Coin(0);
+        Valuable fakeCoin = new Coin(0);
         assertFalse( purse.insert(fakeCoin));
     }
 
@@ -105,7 +105,7 @@ public class PurseTest {
 			Coin coin = new Coin(value);
 			assertTrue(purse.insert(coin));
 			assertEquals(value,  purse.getBalance(), TOL);
-			Coin [] result = purse.withdraw(value);
+			Valuable [] result = purse.withdraw(value);
 			assertTrue( result != null );
 			assertEquals( 1, result.length );
 			assertSame(  coin, result[0] );
@@ -129,10 +129,10 @@ public class PurseTest {
 		}
 		assertEquals(amount1+amount2, purse.getBalance(), TOL );
 		assertEquals(10, purse.count() );
-		Coin [] wd1 = purse.withdraw(amount1);
+		Valuable [] wd1 = purse.withdraw(amount1);
 		assertEquals(amount1, sumValue(wd1), TOL );
 		assertEquals(amount2, purse.getBalance(), TOL );
-		Coin [] wd2 = purse.withdraw(amount2);
+		Valuable [] wd2 = purse.withdraw(amount2);
 		assertEquals(0, purse.getBalance(), TOL );
 	}
 
@@ -150,13 +150,13 @@ public class PurseTest {
 	
 	/**
 	 * Sum the value of some coins.
-	 * @param coins array of coins
+	 * @param wd1 array of coins
 	 * @return sum of values of the coins
 	 */
-	private double sumValue(Coin [] coins)  {
-		if (coins == null) return 0;
+	private double sumValue(Valuable[] wd1)  {
+		if (wd1 == null) return 0;
 		double sum = 0;
-		for(Coin c: coins) if (c != null) sum += c.getValue();
+		for(Valuable c: wd1) if (c != null) sum += c.getValue();
 		return sum;
 	}
 }
