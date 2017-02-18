@@ -119,7 +119,7 @@ public class Purse {
 
 			@Override
 			public int compare(Valuable arg0, Valuable arg1) {
-				return (int) Math.signum(arg0.getValue() - arg1.getValue());
+				return (int) Math.signum(arg1.getValue() - arg0.getValue());
 			}
 		});
 
