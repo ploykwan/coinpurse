@@ -46,6 +46,6 @@ public class Coin extends AbstractValuable {
 			currency = "Sen";
 			value = value * 100 ;
 		}
-		return value + "-" + currency;
+		return value + "-" + currency+" note";
 	}
 }
