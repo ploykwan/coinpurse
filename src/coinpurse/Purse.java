@@ -145,7 +145,7 @@ public class Purse {
 	 * return whatever is a useful description.
 	 */
 	public String toString() {
-		return getCapacity() + "money with value " + getBalance();
+		return count() + " money with value " + getBalance();
 	}
 
 }

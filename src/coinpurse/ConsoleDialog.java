@@ -70,17 +70,15 @@ public class ConsoleDialog {
 		Scanner scanline = new Scanner(inline);
 		while (scanline.hasNextDouble()) {
 			double value = scanline.nextDouble();
-			if (value >= 20) {
-				Valuable bank = new BankNote(value);
-				System.out.printf("Deposit %s... ", bank.toString());
-				boolean ok = purse.insert(bank);
-				System.out.println((ok ? "ok" : "FAILED"));
-			} else {
-				Coin coin = new Coin(value);
-				System.out.printf("Deposit %s... ", coin.toString());
-				boolean ok = purse.insert(coin);
-				System.out.println((ok ? "ok" : "FAILED"));
-			}
+				MoneyFactory factory = MoneyFactory.getInstance();
+				try{
+					Valuable money = factory.createMoney(value);
+					System.out.printf("Deposit %s... ", value);
+					boolean ok = purse.insert(money);
+					System.out.println((ok ? "ok" : "FAILED"));
+				}catch (IllegalArgumentException ex){
+					System.out.println("Sorry, "+value+" is not a valid amount.");
+				}
 		}
 		if (scanline.hasNext())
 			System.out.println("Invalid input: " + scanline.next());
