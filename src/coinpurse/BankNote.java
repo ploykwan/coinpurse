@@ -23,7 +23,7 @@ public class BankNote extends AbstractValuable {
 		super(value,currency);
 	}
 	public long getSerialNumber(){
-		this.serialNumber = ThaiMoneyFactory.serialNumber;
+//		this.serialNumber = ThaiMoneyFactory.serialNumber;
 		return this.serialNumber;
 	}
 	/**

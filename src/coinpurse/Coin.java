@@ -10,7 +10,7 @@ public class Coin extends AbstractValuable {
 	public static final String DEFAULT_CURRENCY = "Baht";
 	/** Value of the coin. */
 	private double value;
-	/** The currency, of course. */
+	/** The currency of coin. */
 	private String currency;
 
 	/**
